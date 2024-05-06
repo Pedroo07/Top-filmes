@@ -12,7 +12,7 @@ const movieUrl = import.meta.env.VITE_API
 const apiKey = import.meta.env.VITE_API_KEY
 
 const Movie = () => {
-  const {id} = useParams()
+  const { id } = useParams()
   const [movie, setMovie] = useState(null)
 
   const getMovie = async (url) => {
@@ -23,42 +23,42 @@ const Movie = () => {
   const formatCurrency = (number) => {
     return number.toLocaleString("en-Us", {
       style: "currency",
-      currency:"USD"
+      currency: "USD"
     })
   }
   useEffect(() => {
     const moviesUrl = `${movieUrl}${id}?${apiKey}`
     getMovie(moviesUrl)
-  },[])
+  }, [])
 
   return (
     <div className="movie-page">
       {movie && (<>
-      <MovieCard movie={movie} showLink={false}/>
-      <p className="tagline">{movie.tagline}</p>
-      <div className="info">
-      <h3>
-        <BsWallet2/> Orçamento:
-      </h3>
-      <p>{formatCurrency(movie.budget)}</p>
-      </div>
-      <div className="info">
-      <h3>
-        <BsGraphUp/> Faturamento:
-      </h3>
-      <p>{formatCurrency(movie.revenue)}</p>
-      </div><div className="info">
-      <h3>
-        <BsHourglassSplit/> Duração:
-      </h3>
-      <p>{movie.runtime} minutos</p>
-      </div>
-      <div className="info description">
-      <h3>
-        <BsFillFileEarmarkTextFill/> Descrição:
-      </h3>
-      <p>{movie.overview}</p>
-      </div>
+        <MovieCard movie={movie} showLink={false} />
+        <p className="tagline">{movie.tagline}</p>
+        <div className="info">
+          <h3>
+            <BsWallet2 /> Orçamento:
+          </h3>
+          <p>{formatCurrency(movie.budget)}</p>
+        </div>
+        <div className="info">
+          <h3>
+            <BsGraphUp /> Faturamento:
+          </h3>
+          <p>{formatCurrency(movie.revenue)}</p>
+        </div><div className="info">
+          <h3>
+            <BsHourglassSplit /> Duração:
+          </h3>
+          <p>{movie.runtime} minutos</p>
+        </div>
+        <div className="info description">
+          <h3>
+            <BsFillFileEarmarkTextFill /> Descrição:
+          </h3>
+          <p>{movie.overview}</p>
+        </div>
       </>)}
     </div>
   )
