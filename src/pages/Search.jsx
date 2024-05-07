@@ -5,7 +5,6 @@ import MovieCard from '../components/MovieCard'
 const searchUrl = import.meta.env.VITE_SEARCH
 const apiKey = import.meta.env.VITE_API_KEY
 
-
 const Search = () => {
   const [searchParams] = useSearchParams()
   const  [movies, setMovies] = useState([])
@@ -17,7 +16,6 @@ const Search = () => {
     console.log(data)
   }
   
-
   useEffect(()=> {
     const searchWithQueryUrl = `${searchUrl}?${apiKey}&query=${query}`
     getSearchMovies(searchWithQueryUrl)
